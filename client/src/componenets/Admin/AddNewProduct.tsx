@@ -42,25 +42,9 @@ class AddNewProduct extends Component<Props, State> {
   
   onFinish = async (values: any) => {
     this.setState({ buttonSaveLoading: true });
-    console.log(values.product);
-    await postProduct({...values.product, ...{id: 15}});
+    await postProduct(values.product);
     this.props.history.push('/');
     this.setState({ buttonSaveLoading: false });
-
-    console.log(JSON.stringify(values.product));
-    // try {
-    //   await saveNewProductMockApi();
-    // } catch (error) {
-    //     console.log(error);
-    //     return;
-    // }
-    // const existingProducts = JSON.parse(localStorage.getItem("products") as string) || [];
-    // const newProduct: Product = {...values.product};
-    // newProduct.id = Math.max(...existingProducts.map((item: Product) => item.id)) + 1;
-    // existingProducts.push(newProduct)
-    // localStorage.setItem('products', JSON.stringify(existingProducts));
-    // this.props.history.push('/');
-    // this.setState({ buttonSaveLoading: false });
   };
 
   render() {
@@ -136,21 +120,15 @@ const columnStyle: CSSProperties = {
 
 export default withRouter(AddNewProduct); 
 
-async function saveNewProductMockApi() {
-  return new Promise((res) => setTimeout(() => res("success"), 2000));
-}
-
 const postProduct = async (product: Product) => {
   try {
-      let response = await fetch('http://localhost:3001/products', {
+      await fetch('http://localhost:3001/products', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(product)
       });
-      // const data = await response.json();
-      // return data;
   } catch (error) {
       console.error(error);
   }

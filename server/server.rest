@@ -10,7 +10,6 @@ POST http://localhost:3001/products
 Content-Type: application/json
 
 {
-    "id": 13,
     "title": "NEW DRESS",
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ornare auctor purus, vel vehicula neque bibendum eget.",
     "price": 799,

@@ -105,8 +105,10 @@ app.get('/products/:id', (req, res) => {
 });
 
 app.post('/products', (req, res) => {
-    products.push(req.body);
-    res.status(201).json(req.body);
+    const newProduct = req.body;
+    newProduct.id = Math.max(...products.map((item) => item.id)) + 1;
+    products.push(newProduct);
+    res.status(201).json(newProduct);
 });
 
 app.put('/products/:id', (req, res) => {
