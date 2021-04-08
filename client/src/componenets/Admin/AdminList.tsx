@@ -4,6 +4,7 @@ import { Component, CSSProperties } from "react";
 import { Link } from "react-router-dom";
 import { Product } from "../ProductItemsList";
 
+
 interface State {
     products?: Product[]; 
 }
@@ -13,8 +14,9 @@ class GetAdminList extends Component < {}, State>{
         products: []
     }
 
-    componentDidMount() {
-        this.setState({ products: JSON.parse(localStorage.getItem('products') as string) || []});
+    async componentDidMount() {
+        const products = await getProducts();
+        this.setState({ products: products });
     }
 
     render() {
@@ -81,4 +83,14 @@ const editStyle: CSSProperties = {
     alignItems: 'center'
 }
 
-export default GetAdminList; 
+export default GetAdminList;
+
+const getProducts = async () => {
+    try {
+        let response = await fetch('http://localhost:3001/products');
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error(error);
+    }
+}

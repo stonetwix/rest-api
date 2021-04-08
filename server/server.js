@@ -85,9 +85,12 @@ let products = [{
 ];
 
 const express = require('express');
-const app = express();
-const port = 3000;
+const cors = require('cors');
 
+const app = express();
+const port = 3001;
+
+app.use(cors());
 app.use(express.static('../client/public'));
 app.use(express.json());
 
