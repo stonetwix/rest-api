@@ -50,7 +50,7 @@ app.delete('/products/:id', (req, res) => {
 //Start server
 app.listen(port, () => console.log(`Server is running on port http://localhost:${port}`));
 
-
+//Helper functions to read/write from/to JSON
 function readProducts() {
     let rawdata = fs.readFileSync('products.json');
     return JSON.parse(rawdata);

@@ -31,4 +31,4 @@ Content-Type: application/json
 
 ###
 
-DELETE http://localhost:3001/products/1
+DELETE http://localhost:3001/products/3
