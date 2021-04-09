@@ -21,13 +21,6 @@ class ProductDetails extends Component <Props, State> {
         this.setState({ product: product });
     }
 
-    // componentDidMount() {   
-    //     const products = JSON.parse(localStorage.getItem('products') as string) || [];
-    //     const productId = Number((this.props.match.params as any).id)
-    //     const product = products.find((p: Product) => p.id === productId);
-    //     this.setState({product: product})
-    // }
-
     render () {
         if (!this.state.product) {
             return <ErrorPage />

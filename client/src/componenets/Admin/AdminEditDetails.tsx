@@ -51,10 +51,6 @@ class AdminEditDetails extends Component<Props, State> {
   onFinish = async (values: any) => {
     this.setState({ buttonSaveLoading: true });
     await putProduct(values.product, (this.props.match.params as any).id);
-    // const products = JSON.parse(localStorage.getItem("products") as string) || [];
-    // const editedProduct: Product = {...this.state.product, ...values.product};
-    // const updatedProducts = products.map((item: Product) => item.id === editedProduct.id ? editedProduct : item);
-    // localStorage.setItem('products', JSON.stringify(updatedProducts));
     this.props.history.push('/');
     this.setState({ buttonSaveLoading: false });
   }
@@ -65,20 +61,10 @@ class AdminEditDetails extends Component<Props, State> {
     console.log(product);
 }
 
-  // componentDidMount() {
-  //   const products = JSON.parse(localStorage.getItem('products') as string) || [];
-  //   const product = products.find((p: Product) => p.id === Number(this.props.match.params.id));
-  //   this.setState({ product: product });
-  // }
 
   handleDelete = async (id: number) => {
     this.setState({ buttonDeleteLoading: true });
     await deleteProduct(id);
-    console.log('delete')
-    // const products = JSON.parse(localStorage.getItem('products') as string) || [];
-    // const productId = this.state.product?.id;
-    // const newProducts = products.filter((item: Product) => item.id !== productId);
-    // localStorage.setItem('products', JSON.stringify(newProducts));
     this.props.history.push('/');
     this.setState({ buttonDeleteLoading: false });
   }
