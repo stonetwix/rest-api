@@ -2,7 +2,7 @@
 
 API med funktionalitet för CRUD. Projektet baseras på ett admin-läge för en webbshop där produkterna läses ut i en lista, klicka på titeln för att hämta den specifika produktens detaljsida, under "edit" kan du uppdatera eller ta bort produkten. Klicka på knappen "Add product" för att lägga till en ny produkt.
 
-## Följande krav är uppfyllda:
+## Följande krav är uppfyllda
 
 ### Krav för godkänt:
 1. Projektet innehåller minst 4 st. endpoints (GET, POST, PUT & DELETE för en resurs)
@@ -29,6 +29,6 @@ I projektets client- och server-mappar kör du:
 ### `npm start`
 
 Kör appen i utvecklingsläge.\
-Öppna [http://localhost:3000](http://localhost:3000) och för att se resultatet i din browser.
+Öppna [http://localhost:3000](http://localhost:3000) för att se resultatet i din browser.
 
 [GitHub-repot](https://github.com/stonetwix/rest-api)
