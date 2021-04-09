@@ -1,5 +1,5 @@
-import { Row, Col, message, Button } from 'antd';
-import { Component, ContextType, CSSProperties } from 'react'; 
+import { Row, Col } from 'antd';
+import { Component, CSSProperties } from 'react'; 
 import { Image } from 'antd';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
 import { Product } from "../ProductItemsList";
@@ -10,27 +10,23 @@ interface State {
 interface Props extends RouteComponentProps {
     id: number
 }
-const success = () => {
-    message.success('The product was added to the cart', 5);
-};
 class ProductDetails extends Component <Props, State> {
   
     state: State = {
         product: undefined,
     }
 
-    componentDidMount() {   
-        const products = JSON.parse(localStorage.getItem('products') as string) || [];
-        const productId = Number((this.props.match.params as any).id)
-        const product = products.find((p: Product) => p.id === productId);
-        this.setState({product: product})
+    async componentDidMount() {
+        const product = await getSpecificProduct(Number((this.props.match.params as any).id));
+        this.setState({ product: product });
     }
 
-    handleAddClick = () => {
-        const { addProductToCart } = this.context;
-        success();
-        addProductToCart(this.state.product!, undefined)
-    }
+    // componentDidMount() {   
+    //     const products = JSON.parse(localStorage.getItem('products') as string) || [];
+    //     const productId = Number((this.props.match.params as any).id)
+    //     const product = products.find((p: Product) => p.id === productId);
+    //     this.setState({product: product})
+    // }
 
     render () {
         if (!this.state.product) {
@@ -47,13 +43,6 @@ class ProductDetails extends Component <Props, State> {
                     <h2 style={titleStyle}>{this.state.product.title}</h2>
                     <h4>{this.state.product.description} </h4>
                     <h2 style={price}>{this.state.product.price + ' kr'} </h2>
-                    <Button 
-                        type="primary" 
-                        style={{ marginTop: '1rem', width: '8rem', marginBottom: '6rem' }} 
-                        onClick={this.handleAddClick}
-                    >
-                        Add to cart 
-                    </Button>
                 </Col>
             </Row>
         ); 
@@ -82,4 +71,14 @@ const titleStyle: CSSProperties = {
 
 const price: CSSProperties = {
     fontWeight: 'bold'
+}
+
+const getSpecificProduct = async (id: number) => {
+    try {
+        let response = await fetch('http://localhost:3001/products/' + id);
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error(error);
+    }
 }

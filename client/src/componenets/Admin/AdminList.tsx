@@ -45,15 +45,17 @@ class GetAdminList extends Component < {}, State>{
                         dataSource={this.state.products}
                         renderItem={item => (
                             <List.Item>
-                                <Link to={'/edit-product/' + item.id}>     
+                                <Link to={'/product/' + item.id}>     
                                 <List.Item.Meta                    
                                     avatar={<Avatar size={64} src={item.imageUrl} />} 
-                                    title={<Link to={'/edit-product/' + item.id}>{item.title}</Link>}
+                                    title={<Link to={'/product/' + item.id}>{item.title}</Link>}
                                     description={[item.description.split('.')[0],  
                                     ]}
                                 />  
+                                </Link>
+                                <Link to={'/edit-product/' + item.id}>
                                     <p style={editStyle}>edit</p>
-                                </Link>   
+                                </Link>
                             </List.Item>
                         )}
                     /> 
@@ -63,7 +65,7 @@ class GetAdminList extends Component < {}, State>{
     }
 }
 
-const containerStyle: CSSProperties ={
+const containerStyle: CSSProperties = {
     display: 'flex', 
     justifyContent: 'center',
     alignItems: 'center',
