@@ -112,7 +112,10 @@ app.post('/products', (req, res) => {
 });
 
 app.put('/products/:id', (req, res) => {
-    products = products.map((item) => item.id === Number(req.params.id) ? req.body : item);
+    const product = req.body;
+    const id = Number(req.params.id);
+    product.id = id;
+    products = products.map((item) => item.id === id ? product : item);
     res.status(200).json(req.body);
 });
 

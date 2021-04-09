@@ -28,7 +28,6 @@ const validateMessages = {
 interface Props extends RouteComponentProps<{ id: string }> {}
 
 interface State {
-  products: Product[];
   product?: Product;
   buttonSaveLoading: boolean;
   buttonDeleteLoading: boolean;
@@ -44,7 +43,6 @@ const successDelete = () => {
 
 class AdminEditDetails extends Component<Props, State> {
   state: State = {
-    products: JSON.parse(localStorage.getItem('products') as string) || [],
     product: undefined,
     buttonSaveLoading: false,
     buttonDeleteLoading: false,
@@ -52,16 +50,11 @@ class AdminEditDetails extends Component<Props, State> {
 
   onFinish = async (values: any) => {
     this.setState({ buttonSaveLoading: true });
-    try {
-      //await saveDeleteProductMockApi();
-    } catch (error) {
-        console.log(error);
-        return;
-    }
-    const products = JSON.parse(localStorage.getItem("products") as string) || [];
-    const editedProduct: Product = {...this.state.product, ...values.product};
-    const updatedProducts = products.map((item: Product) => item.id === editedProduct.id ? editedProduct : item);
-    localStorage.setItem('products', JSON.stringify(updatedProducts));
+    await putProduct(values.product, (this.props.match.params as any).id);
+    // const products = JSON.parse(localStorage.getItem("products") as string) || [];
+    // const editedProduct: Product = {...this.state.product, ...values.product};
+    // const updatedProducts = products.map((item: Product) => item.id === editedProduct.id ? editedProduct : item);
+    // localStorage.setItem('products', JSON.stringify(updatedProducts));
     this.props.history.push('/');
     this.setState({ buttonSaveLoading: false });
   }
@@ -69,6 +62,7 @@ class AdminEditDetails extends Component<Props, State> {
   async componentDidMount() {
     const product = await getProduct(Number((this.props.match.params as any).id));
     this.setState({ product: product });
+    console.log(product);
 }
 
   // componentDidMount() {
@@ -77,10 +71,9 @@ class AdminEditDetails extends Component<Props, State> {
   //   this.setState({ product: product });
   // }
 
-  handleDelete = async (product: Product) => {
+  handleDelete = async (id: number) => {
     this.setState({ buttonDeleteLoading: true });
-
-    await deleteProduct(product);
+    await deleteProduct(id);
     console.log('delete')
     // const products = JSON.parse(localStorage.getItem('products') as string) || [];
     // const productId = this.state.product?.id;
@@ -156,7 +149,7 @@ class AdminEditDetails extends Component<Props, State> {
                   <Button 
                     type="primary" 
                     danger 
-                    onClick={() => {this.handleDelete(product); successDelete();}} 
+                    onClick={() => {this.handleDelete(Number((this.props.match.params as any).id)); successDelete();}} 
                     loading={this.state.buttonDeleteLoading}
                   >
                     Delete
@@ -197,10 +190,20 @@ const getProduct = async (id: number) => {
   }
 }
 
-const deleteProduct = async (product: Product) => {
+const deleteProduct = async (id: number) => {
   try {
-      await fetch('http://localhost:3001/products/', {
+      await fetch('http://localhost:3001/products/' + id, {
         method: 'DELETE',
+      });
+  } catch (error) {
+      console.error(error);
+  }
+}
+
+const putProduct = async (product: Product, id: number) => {
+  try {
+      await fetch('http://localhost:3001/products/' + id, {
+        method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
         },
