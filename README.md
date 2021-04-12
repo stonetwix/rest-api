@@ -1,6 +1,6 @@
 # REST-API
 
-API med funktionalitet för CRUD. Projektet baseras på ett admin-läge för en webbshop där produkterna läses ut i en lista, klicka på titeln för att hämta den specifika produktens detaljsida, under "edit" kan du uppdatera eller ta bort produkten. Klicka på knappen "Add product" för att lägga till en ny produkt.
+API med funktionalitet för CRUD. Projektet baseras på ett admin-läge för en webbshop där produkterna läses ut i en lista, klicka på titeln för att hämta den specifika produktens detaljsida, under "edit" kan du uppdatera eller ta bort produkten. Klicka på knappen "Add product" för att lägga till en ny produkt. Ändringarna skrivs till och uppdateras i en lokal json-fil.
 
 ## Följande krav är uppfyllda
 
