@@ -48,14 +48,15 @@ const detailContainer: CSSProperties = {
     display: 'flex',
     justifyContent: 'space-around',
     width: '80%',
-    margin: 'auto',
+    marginLeft: '10%',
+    marginRight: '10%'
 }
 
 const columnStyle: CSSProperties = {
     display: 'flex',
     flexDirection: 'column',
-    marginTop: '10rem',
-    marginBottom: '5rem',
+    paddingTop: '10rem',
+    paddingBottom: '5rem',
 }
 
 const titleStyle: CSSProperties = {

@@ -110,11 +110,11 @@ const ContainerStyle: CSSProperties = {
   justifyContent: "space-around",
   alignItems: "space-around",
   width: "70%",
-  margin: "auto",
+  marginLeft: "15%",
 };
   
 const columnStyle: CSSProperties = {
-  marginTop: "10rem",
+  paddingTop: "10rem",
   paddingBottom: "8rem",
 };
 

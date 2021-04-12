@@ -58,7 +58,6 @@ class AdminEditDetails extends Component<Props, State> {
   async componentDidMount() {
     const product = await getProduct(Number((this.props.match.params as any).id));
     this.setState({ product: product });
-    console.log(product);
 }
 
 
@@ -108,7 +107,7 @@ class AdminEditDetails extends Component<Props, State> {
               </Form.Item>
 
               <Form.Item name={["product", "description"]} label="Description" rules={[{ required: true }]}>
-                <Input.TextArea defaultValue={product.description}/>
+                <Input.TextArea/>
               </Form.Item>
 
               <Form.Item name={["product", "price"]} label="Price" rules={[{ required: true }]}>
@@ -155,11 +154,11 @@ const ContainerStyle: CSSProperties = {
   justifyContent: "space-around",
   alignItems: "space-around",
   width: "70%",
-  margin: "auto",
+  marginLeft: "15%",
 };
 
 const columnStyle: CSSProperties = {
-  marginTop: "10rem",
+  paddingTop: "10rem",
   paddingBottom: "8rem",
 };
 

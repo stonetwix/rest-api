@@ -48,7 +48,7 @@ class GetAdminList extends Component < {}, State>{
                                 <Link to={'/product/' + item.id}>     
                                 <List.Item.Meta                    
                                     avatar={<Avatar size={64} src={item.imageUrl} />} 
-                                    title={<Link to={'/product/' + item.id}>{item.title}</Link>}
+                                    title={item.title}
                                     description={[item.description.split('.')[0],  
                                     ]}
                                 />  
@@ -73,7 +73,7 @@ const containerStyle: CSSProperties = {
 }
 
 const columnStyle: CSSProperties = {
-   marginTop: '5rem',
+   margin: '5rem 0 0 0',
    width: '80%'
 }
 
