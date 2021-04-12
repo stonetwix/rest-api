@@ -60,6 +60,10 @@ class AdminEditDetails extends Component<Props, State> {
     this.setState({ product: product });
 }
 
+componentWillUnmount() {
+  this.setState({ product: undefined });
+}
+
 
   handleDelete = async (id: number) => {
     this.setState({ buttonDeleteLoading: true });

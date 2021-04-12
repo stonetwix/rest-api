@@ -70,6 +70,9 @@ const price: CSSProperties = {
 const getSpecificProduct = async (id: number) => {
     try {
         let response = await fetch('http://localhost:3001/products/' + id);
+        if (!response.ok) {
+            return;
+        }
         const data = await response.json();
         return data;
     } catch (error) {

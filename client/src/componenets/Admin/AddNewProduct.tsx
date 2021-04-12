@@ -47,6 +47,10 @@ class AddNewProduct extends Component<Props, State> {
     this.setState({ buttonSaveLoading: false });
   };
 
+  componentWillUnmount() {
+    this.setState({ product: undefined });
+  };
+
   render() {
     return (
       <div>

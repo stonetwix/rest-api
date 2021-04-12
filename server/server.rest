@@ -2,7 +2,7 @@ GET http://localhost:3001/products
 
 ###
 
-GET http://localhost:3001/products/4
+GET http://localhost:3001/products/44
 
 ###
 
@@ -31,4 +31,4 @@ Content-Type: application/json
 
 ###
 
-DELETE http://localhost:3001/products/3
+DELETE http://localhost:3001/products/2
