@@ -13,7 +13,6 @@ app.use(express.static('../client/public'));
 app.use(express.json());
 
 // Endpoints
-
 app.route('/products')
 .get((req, res) => {  
     res.status(200).json(readProducts());
@@ -41,7 +40,7 @@ app.route('/products/:id')
     const products = readProducts();
     const product = products.find(p => p.id === Number(req.params.id));
     if (!product) {
-        res.status(404).json({ error: 'not found' });
+        res.status(404).json({ error: 'Product not available' });
     }
     res.status(200).json(product);
 })

@@ -1,10 +1,8 @@
 GET http://localhost:3001/products
-Accept: application/json
 
 ###
 
-GET http://localhost:3001/products/4
-Accept: application/json
+GET http://localhost:3001/products/44
 
 ###
 
