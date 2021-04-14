@@ -23,7 +23,7 @@ visa upp resultatet vid GET anrop
 
 ## Bygg och kör projektet
 
-I båda projekteten "client" och "server" kör du:
+I båda projekten; "client" och "server" kör du:
 
 ### `npm i`
 ### `npm start`
