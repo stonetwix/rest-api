@@ -2,7 +2,7 @@ GET http://localhost:3001/products
 
 ###
 
-GET http://localhost:3001/products/44
+GET http://localhost:3001/products/4
 
 ###
 
