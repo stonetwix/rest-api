@@ -29,6 +29,7 @@ I båda projekten; "client" och "server" kör du:
 ### `npm start`
 
 Kör appen i utvecklingsläge.\
-Öppna [http://localhost:3000](http://localhost:3000) för att se resultatet i din browser.
+När båda körts igång med "npm start" – öppna [http://localhost:3000](http://localhost:3000) för att se resultatet i din browser.
+Servern kör på [http://localhost:3001/products](http://localhost:3001/products).
 
 [GitHub-repot](https://github.com/stonetwix/rest-api)
