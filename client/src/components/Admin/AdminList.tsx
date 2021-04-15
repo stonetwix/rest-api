@@ -2,13 +2,19 @@ import { PlusOutlined } from "@ant-design/icons";
 import { Avatar, Button, Col, List, Row, } from "antd";
 import { Component, CSSProperties } from "react";
 import { Link } from "react-router-dom";
-import { Product } from "../ProductItemsList";
 
+export interface Product {
+    id: number
+    title: string
+    description: string
+    price: number
+    imageUrl: string
+}
 
 interface State {
     products?: Product[]; 
 }
-class GetAdminList extends Component < {}, State>{
+class AdminList extends Component < {}, State>{
 
     state: State = {
         products: []
@@ -85,7 +91,7 @@ const editStyle: CSSProperties = {
     alignItems: 'center'
 }
 
-export default GetAdminList;
+export default AdminList;
 
 const getProducts = async () => {
     try {

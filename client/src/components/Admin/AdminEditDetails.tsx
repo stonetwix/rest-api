@@ -2,7 +2,7 @@ import { Form, Input, Button, Col, Row, message } from "antd";
 import { Component, CSSProperties } from "react";
 import { RouteComponentProps, withRouter } from "react-router-dom";
 import ErrorPage from "../ErrorPage";
-import { Product } from "../ProductItemsList";
+import { Product } from './AdminList';
 
 const layout = {
   labelCol: {

@@ -2,7 +2,7 @@ import { Row, Col } from 'antd';
 import { Component, CSSProperties } from 'react'; 
 import { Image } from 'antd';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
-import { Product } from "../ProductItemsList";
+import { Product } from '../Admin/AdminList';
 import ErrorPage from '../ErrorPage';
 interface State {
     product?: Product;

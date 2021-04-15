@@ -9,7 +9,6 @@ const port = 3001;
 const { body, validationResult } = require('express-validator');
 
 app.use(cors());
-app.use(express.static('../client/public'));
 app.use(express.json());
 
 // Endpoints
